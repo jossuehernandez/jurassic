@@ -29,11 +29,11 @@ public class SplashScreen extends AppCompatActivity {
                 // Start your app main activity
                 Log.d(TAG, "run: Start app main activity ... ");
 
-                // Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                // startActivity(i);
+                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(i);
 
                 // close this activity
-                // finish();
+                finish();
             }
         }, SPLASH_TIME_OUT);
     }
