@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ShopCart</string>
+    <string name="app_welcome_to_sign_in">GET STARTED</string>
 </resources>
