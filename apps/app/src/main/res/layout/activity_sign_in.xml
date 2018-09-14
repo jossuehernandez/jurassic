@@ -47,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp">
 
         <ImageView
             android:id="@+id/img_email"
@@ -94,7 +95,8 @@
             android:id="@+id/til_passwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
 
             <EditText
                 android:id="@+id/fieldPasswd"
@@ -103,7 +105,9 @@
                 android:ems="10"
                 android:hint="@string/app_sign_hint_passwd"
                 android:inputType="text"
-                android:singleLine="true" />
+                android:singleLine="true"
+
+                />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
