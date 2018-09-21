@@ -1,5 +1,6 @@
 package com.example.jos.shopcart;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -99,6 +100,15 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     private void login(){
