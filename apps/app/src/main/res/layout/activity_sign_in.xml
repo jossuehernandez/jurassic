@@ -112,7 +112,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:layout_marginTop="50dp">
     <Button
@@ -126,7 +126,27 @@
         android:textSize="16sp"
         android:textStyle="bold"
         />
+
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_marginTop="5dp">
+        <Button
+            android:id ="@+id/btnGoogleSignIn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:background="@drawable/button_bg_google"
+            android:padding="15dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
