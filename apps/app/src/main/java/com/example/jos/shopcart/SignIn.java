@@ -25,8 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SignIn extends AppCompatActivity {
@@ -99,9 +99,12 @@ public class SignIn extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
 
 
-
-
-
+        Map<String,Object> datos = new HashMap<>();
+        datos.put("nombre","Joss");
+        datos.put("apellido","Hedez");
+        datos.put("telefono","55");
+        datos.put("direccion","nte 11");
+        mDatabaseReference.child("usuario").push().setValue( datos );
 
         mRootChild.addValueEventListener(new ValueEventListener() {
             @Override

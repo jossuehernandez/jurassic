@@ -138,7 +138,7 @@
             android:id ="@+id/btnGoogleSignIn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="CREATE ACCOUNT"
             android:background="@drawable/button_bg_google"
             android:padding="15dp"
             android:textColor="#000"
