@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jos.shopcart.com.example.jos.shopcart.utils.Validator;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -40,6 +41,7 @@ public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference mRootChild = mDatabaseReference.child("texto");
@@ -104,7 +106,16 @@ public class SignIn extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String password = mPasswd.getText().toString();
 
-        if( email.equals("") || password.equals("") ) return;
+
+        if( !Validator.Email.validate( email ) ){
+            Toast.makeText(SignIn.this, "El email no es válido ", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if( !Validator.Password.validate( password ) ){
+            Toast.makeText(SignIn.this, "El password no es válido ", Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
 
 
@@ -124,7 +135,7 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         }
-    });
+        });
     }
 
     @Override
