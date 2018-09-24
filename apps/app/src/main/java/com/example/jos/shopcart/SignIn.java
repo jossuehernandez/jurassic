@@ -3,6 +3,7 @@ package com.example.jos.shopcart;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.firebase.client.Firebase;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +45,7 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    Firebase myFirebase;
 
     DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference mRootChild = mDatabaseReference.child("texto");
@@ -56,6 +60,26 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mEmail = findViewById(R.id.fieldEmail);
         mPasswd = findViewById(R.id.fieldPasswd);
+
+        Firebase.setAndroidContext(this);
+        String DeviceID = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        myFirebase = new Firebase("https://demofirebase-e47af.firebaseio.com/");
+
+        Firebase myNewChild = myFirebase.child("Users");
+        myNewChild.setValue("JosdesiTest");
+
+        Firebase myNewChild2 = myFirebase.child("-LN8t4CfC7lr3HXqhucG");
+        Map<String,Object> datos = new HashMap<>();
+        datos.put("nombre","Jossssssssssssss");
+        datos.put("apellido","Hedez");
+        datos.put("telefono","555555555");
+        datos.put("direccion","nte 11");
+        myNewChild2.setValue( datos );
+
+
+
+
+
 
 
         // Configure Google Sign In
@@ -149,9 +173,9 @@ public class SignIn extends AppCompatActivity {
         Map<String,Object> datos = new HashMap<>();
         datos.put("nombre","Joss");
         datos.put("apellido","Hedez");
-        datos.put("telefono","55");
+        datos.put("telefono","55678910");
         datos.put("direccion","nte 11");
-        mDatabaseReference.child("usuario").push().setValue( datos );
+        mDatabaseReference.child("usuario").setValue( datos );
 
         mRootChild.addValueEventListener(new ValueEventListener() {
             @Override
