@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,6 +90,41 @@ public class SignIn extends AppCompatActivity {
 
             }
         });
+
+        Button btnCreateAccount = findViewById(R.id.btnCreateAccount);
+        btnCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sigIn();
+            }
+        });
+    }
+
+    private void sigIn() {
+        String email = mEmail.getText().toString();
+        String password = mPasswd.getText().toString();
+
+        if( email.equals("") || password.equals("") ) return;
+
+
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            //checking if success
+            if (task.isSuccessful()) {
+
+                Toast.makeText(SignIn.this, "Se ha registrado el usuario con el email: " + mEmail, Toast.LENGTH_LONG).show();
+            } else {
+                if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión
+                    Toast.makeText(SignIn.this, "Ese usuario ya existe ", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignIn.this, "No se pudo registrar el usuario ", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    });
     }
 
     @Override

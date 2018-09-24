@@ -135,7 +135,7 @@
         android:gravity="center"
         android:layout_marginTop="5dp">
         <Button
-            android:id ="@+id/btnGoogleSignIn"
+            android:id ="@+id/btnCreateAccount"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="CREATE ACCOUNT"
